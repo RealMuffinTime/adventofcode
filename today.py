@@ -26,9 +26,12 @@ else:
 if not os.path.exists(f"{year}/day{day}.py"):
     with open(f"{year}/day{day}.py", mode="w+") as file:
         print(f"Creating python file for day {day}, and opening {address}")
-        file.write(f"# Advent of code {year} day {day} have fun.\n# {address}\n")
+        file.write(f"# Advent of code {year} day {day} have fun.\n"
+                   f"# {address}\n"
+                   f"\n"
+                   f'with open("input{day}") as file:\n'
+                   f'   for line in file.readlines():\n')
         webbrowser.get().open_new(address)
-
 else:
     print(f"Already existing python file for day {day}, you may want to open {address}.")
 
