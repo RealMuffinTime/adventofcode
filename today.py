@@ -4,7 +4,7 @@ import requests
 import webbrowser
 
 year, month, day = str(datetime.date.today()).split("-")
-address = f"https://adventofcode.com/{year}/day/{day.strip('0')}"
+address = f"https://adventofcode.com/{year}/day/{str(int(day))}"
 session = ""  # you can paste your session cookie here
 if session == "":
     session = input("Please input your session cookie:")
