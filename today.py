@@ -15,10 +15,16 @@ def setup(input_date):
         print(f"Creating folder for year {year}.")
         os.makedirs(f"{year}/")
     else:
-        print(f"Already existing folder for {year}.")
+        print(f"Already existing folder for year{year}.")
 
-    if not os.path.exists(f"{year}/day{day}.py"):
-        with open(f"{year}/day{day}.py", mode="w+") as file:
+    if not os.path.exists(f"{year}/day{day}"):
+        print(f"Creating folder for day {day}.")
+        os.makedirs(f"{year}/day{day}")
+    else:
+        print(f"Already existing folder for day {day}.")
+
+    if not os.path.exists(f"{year}/day{day}/day{day}.py"):
+        with open(f"{year}/day{day}/day{day}.py", mode="w+") as file:
             print(f"Creating python file for day {day}, and opening {address}")
             file.write(f"# Advent of code {year} day {day} have fun.\n"
                        f"# {address}\n"
@@ -29,10 +35,10 @@ def setup(input_date):
     else:
         print(f"Already existing python file for day {day}, you may want to open {address}.")
 
-    if not os.path.exists(f"{year}/input{day}"):
+    if not os.path.exists(f"{year}/day{day}/input{day}"):
         puzzle_input = requests.get(f"{address}/input", cookies={'session': f'{session}'})
         if not puzzle_input.text.startswith("Puzzle inputs differ by user."):
-            with open(f"{year}/input{day}", mode="w+") as file:
+            with open(f"{year}/day{day}/input{day}", mode="w+") as file:
                 print(f"Creating input file for day {day}, and writing requested input.")
                 file.write(puzzle_input.text)
         else:
