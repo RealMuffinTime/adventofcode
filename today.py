@@ -56,7 +56,7 @@ if date[1] != "12":
     print("Or do you want to make some older puzzles?")
     date = None
     while date is None:
-        temp_date = input("Please provide the date: ")
+        temp_date = input("Please provide the date (yyyy-mm-dd): ")
         try:
             date = str(datetime.datetime.strptime(temp_date, '%Y-%m-%d').date()).split("-")
             if date[1] != "12" or int(date[2]) < 1 or int(date[2]) > 25:
