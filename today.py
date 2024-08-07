@@ -7,15 +7,15 @@ import webbrowser
 def setup(input_date):
     year, month, day = input_date
     address = f"https://adventofcode.com/{year}/day/{str(int(day))}"
-    session = ""  # you can paste your session cookie here
+    session = os.getenv("session")
     if session == "":
-        session = input("Please input your session cookie:")
+        session = input("Please set your session cookie as environment variable:")
 
     if not os.path.exists(f"{year}/"):
         print(f"Creating folder for year {year}.")
         os.makedirs(f"{year}/")
     else:
-        print(f"Already existing folder for year{year}.")
+        print(f"Already existing folder for year {year}.")
 
     if not os.path.exists(f"{year}/day{day}"):
         print(f"Creating folder for day {day}.")
